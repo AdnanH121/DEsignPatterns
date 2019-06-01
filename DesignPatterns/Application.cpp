@@ -1,23 +1,18 @@
 #include<iostream>
-#include "SFML/Graphics.hpp"
+#include<string>
+#include"Window.h"
+#include"Shape.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	
+	Shape* basicShape = Shape::getShape("Triangle");
+	basicShape->update();
 
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
+	Shape* anotherShape = Shape::getShape("Rectangle");
+	anotherShape->update();
 
-		window.clear();
-		window.display();
-	}
+	Window::getInstance()->update();
 
+	system("pause");
 	return 0;
 }
