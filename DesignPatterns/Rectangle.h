@@ -1,15 +1,13 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
-#include "Shape.h"
-class Rectangle : public Shape
+#include "GameObject.h"
+
+class Rectangle : public GameObject
 {
 public:
-	void update()
-	{
-		std::cout << "I am a rectangle" << std::endl;
-	}
+	void update();
 	Rectangle();
 	~Rectangle();
 };
 
-#endif//RECTANGLE_H
+#endif // !RECTANGLE_H

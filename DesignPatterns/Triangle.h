@@ -1,15 +1,11 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
+#include "GameObject.h"
 
-
-#include "Shape.h"
-class Triangle : public Shape
+class Triangle : public GameObject
 {
 public:
-	void update()
-	{
-		std::cout << "I am a triangle" << std::endl;
-	}
+	void update();
 	Triangle();
 	~Triangle();
 };

@@ -1,4 +1,6 @@
 #include "Window.h"
+#include "GameState.h"
+
 
 Window* Window::instance = 0;
 
@@ -22,6 +24,7 @@ std::string Window::getWindowName()
 
 void Window::update()
 {
+	GameState* gameState = new GameState();
 
 	while (this->renderContext->isOpen())
 	{
@@ -32,14 +35,25 @@ void Window::update()
 				this->renderContext->close();
 		}
 
-		renderContext->clear();
-		renderContext->display();
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+		{
+			gameState->instantiateObject("Triangle");
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		{
+			gameState->instantiateObject("Rectangle");
+		}
+
+
+		gameState->update();
+		this->renderContext->clear();
+		this->renderContext->display();
 	}
 }
 
 Window::Window()
 {
-	renderContext = new sf::RenderWindow (sf::VideoMode(800, 600), this->getWindowName());
+	renderContext = new sf::RenderWindow(sf::VideoMode(800, 600), this->getWindowName());
 }
 
 
